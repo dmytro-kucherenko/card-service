@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up actions
+        uses: actions/checkout@v4
+
+      - name: Download packages
+        run: go mod download
+
+      - name: Check types
+        run: make lint
+
+      - name: Check packages
+        run: go mod tidy && git diff --exit-code go.mod
+
+      - name: Build module
+        run: make build
+
+      - name: Run tests
+        run: make test
