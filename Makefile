@@ -24,8 +24,8 @@ pre-commit:
 
 openapi-gen:
 	@go mod vendor
-	@touch api/openapi/swagger.json
-	@go tool github.com/swaggo/swag/cmd/swag init -o api/openapi -d cmd/api,internal
+	@touch api/gen/rest/swagger.json
+	@go tool github.com/swaggo/swag/cmd/swag init -o api/gen/rest -d cmd/api,internal
 	@go tool github.com/swaggo/swag/cmd/swag fmt
 
 api-gen:

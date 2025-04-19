@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"github.com/dmytro-kucherenko/card-service/api/openapi"
+	"github.com/dmytro-kucherenko/card-service/api/gen/rest"
 	"github.com/dmytro-kucherenko/card-service/internal/api/rest/card"
 	"github.com/dmytro-kucherenko/card-service/internal/api/rest/pkg/interceptors"
 	"github.com/dmytro-kucherenko/card-service/internal/pkg/config"
@@ -16,12 +16,12 @@ func init() {
 	basePath := config.AppBasePath()
 	protocol := config.AppProtocol()
 
-	openapi.SwaggerInfo.Title = "Card API"
-	openapi.SwaggerInfo.Description = "API server for processing bank card requests."
-	openapi.SwaggerInfo.Version = "1.0"
-	openapi.SwaggerInfo.Host = host
-	openapi.SwaggerInfo.BasePath = basePath
-	openapi.SwaggerInfo.Schemes = []string{protocol}
+	rest.SwaggerInfo.Title = "Card API"
+	rest.SwaggerInfo.Description = "API server for processing bank card requests."
+	rest.SwaggerInfo.Version = "1.0"
+	rest.SwaggerInfo.Host = host
+	rest.SwaggerInfo.BasePath = basePath
+	rest.SwaggerInfo.Schemes = []string{protocol}
 }
 
 // @version		1.0
