@@ -1,5 +1,5 @@
 package internal
 
-func Init() {
+func Run() {
 	// TODO: Server initialization
 }
