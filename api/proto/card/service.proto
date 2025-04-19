@@ -4,7 +4,7 @@ package card;
 
 import "buf/validate/validate.proto";
 
-service Card { rpc Validate(ValidateRequest) returns (ValidateResponse); }
+service Service { rpc Validate(ValidateRequest) returns (ValidateResponse); }
 
 message ValidateRequest {
   string number = 1 [ (buf.validate.field).string.min_len = 1 ];

@@ -9,7 +9,7 @@ import (
 )
 
 type Handler struct {
-	gen.UnimplementedCardServer
+	gen.UnimplementedServiceServer
 }
 
 func NewHandler() *Handler {
@@ -17,7 +17,7 @@ func NewHandler() *Handler {
 }
 
 func (handler *Handler) Init(server *grpc.Server) {
-	gen.RegisterCardServer(server, handler)
+	gen.RegisterServiceServer(server, handler)
 }
 
 func (handler *Handler) Validate(ctx context.Context, request *gen.ValidateRequest) (*gen.ValidateResponse, error) {

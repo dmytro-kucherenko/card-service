@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Card_Validate_FullMethodName = "/card.Card/Validate"
+	Service_Validate_FullMethodName = "/card.Service/Validate"
 )
 
-// CardClient is the client API for Card service.
+// ServiceClient is the client API for Service service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CardClient interface {
+type ServiceClient interface {
 	Validate(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error)
 }
 
-type cardClient struct {
+type serviceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCardClient(cc grpc.ClientConnInterface) CardClient {
-	return &cardClient{cc}
+func NewServiceClient(cc grpc.ClientConnInterface) ServiceClient {
+	return &serviceClient{cc}
 }
 
-func (c *cardClient) Validate(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error) {
+func (c *serviceClient) Validate(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ValidateResponse)
-	err := c.cc.Invoke(ctx, Card_Validate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Service_Validate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CardServer is the server API for Card service.
-// All implementations must embed UnimplementedCardServer
+// ServiceServer is the server API for Service service.
+// All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
-type CardServer interface {
+type ServiceServer interface {
 	Validate(context.Context, *ValidateRequest) (*ValidateResponse, error)
-	mustEmbedUnimplementedCardServer()
+	mustEmbedUnimplementedServiceServer()
 }
 
-// UnimplementedCardServer must be embedded to have
+// UnimplementedServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedCardServer struct{}
+type UnimplementedServiceServer struct{}
 
-func (UnimplementedCardServer) Validate(context.Context, *ValidateRequest) (*ValidateResponse, error) {
+func (UnimplementedServiceServer) Validate(context.Context, *ValidateRequest) (*ValidateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Validate not implemented")
 }
-func (UnimplementedCardServer) mustEmbedUnimplementedCardServer() {}
-func (UnimplementedCardServer) testEmbeddedByValue()              {}
+func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
+func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
 
-// UnsafeCardServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CardServer will
+// UnsafeServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ServiceServer will
 // result in compilation errors.
-type UnsafeCardServer interface {
-	mustEmbedUnimplementedCardServer()
+type UnsafeServiceServer interface {
+	mustEmbedUnimplementedServiceServer()
 }
 
-func RegisterCardServer(s grpc.ServiceRegistrar, srv CardServer) {
-	// If the following call pancis, it indicates UnimplementedCardServer was
+func RegisterServiceServer(s grpc.ServiceRegistrar, srv ServiceServer) {
+	// If the following call pancis, it indicates UnimplementedServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Card_ServiceDesc, srv)
+	s.RegisterService(&Service_ServiceDesc, srv)
 }
 
-func _Card_Validate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Service_Validate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ValidateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CardServer).Validate(ctx, in)
+		return srv.(ServiceServer).Validate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Card_Validate_FullMethodName,
+		FullMethod: Service_Validate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CardServer).Validate(ctx, req.(*ValidateRequest))
+		return srv.(ServiceServer).Validate(ctx, req.(*ValidateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Card_ServiceDesc is the grpc.ServiceDesc for Card service.
+// Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Card_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "card.Card",
-	HandlerType: (*CardServer)(nil),
+var Service_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "card.Service",
+	HandlerType: (*ServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Validate",
-			Handler:    _Card_Validate_Handler,
+			Handler:    _Service_Validate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
