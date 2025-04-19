@@ -11,7 +11,7 @@ type ErrCode uint16
 const Range = 100
 
 const (
-	ErrInternal ErrCode = iota
+	ErrInternal ErrCode = iota + 1
 	ErrValidation
 )
 
