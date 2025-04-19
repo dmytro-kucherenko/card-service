@@ -1,0 +1,66 @@
+definitions:
+  CardValidateRequest:
+    properties:
+      month:
+        maximum: 12
+        minimum: 1
+        type: integer
+      number:
+        type: string
+      year:
+        maximum: 65535
+        minimum: 1970
+        type: integer
+    required:
+    - month
+    - number
+    - year
+    type: object
+  CardValidateResponse:
+    properties:
+      valid:
+        type: boolean
+    type: object
+  Error:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    type: object
+  ErrorResponse:
+    properties:
+      error:
+        $ref: '#/definitions/Error'
+      valid:
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /card/validate:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CardData
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/CardValidateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/CardValidateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      summary: Validate card
+      tags:
+      - Card
+swagger: "2.0"

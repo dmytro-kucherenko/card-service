@@ -21,6 +21,9 @@ jobs:
       - name: Check packages
         run: go mod tidy && git diff --exit-code go.mod go.sum
 
+      - name: Check generated API
+        run: make api-gen && git diff --exit-code api/
+
       - name: Build module
         run: make build
 

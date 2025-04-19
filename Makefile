@@ -21,3 +21,12 @@ lint:
 
 pre-commit:
 	@pre-commit autoupdate && pre-commit install
+
+openapi-gen:
+	@go mod vendor
+	@touch api/openapi/swagger.json
+	@go tool github.com/swaggo/swag/cmd/swag init -o api/openapi -d cmd/api,internal
+	@go tool github.com/swaggo/swag/cmd/swag fmt
+
+api-gen:
+	@make openapi-gen
