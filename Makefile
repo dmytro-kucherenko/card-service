@@ -34,3 +34,9 @@ proto-gen:
 api-gen:
 	@make openapi-gen
 	@make proto-gen
+
+compose-up:
+	@docker-compose up -d
+
+compose-down:
+	@docker-compose down

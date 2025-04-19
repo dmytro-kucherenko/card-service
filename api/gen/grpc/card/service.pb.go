@@ -136,8 +136,8 @@ const file_card_service_proto_rawDesc = "" +
 	"\x05month\x18\x02 \x01(\rB\t\xbaH\x06*\x04\x10\r \x00R\x05month\x12 \n" +
 	"\x04year\x18\x03 \x01(\rB\f\xbaH\t*\a\x10\x80\x80\x04 \xb1\x0fR\x04year\"(\n" +
 	"\x10ValidateResponse\x12\x14\n" +
-	"\x05valid\x18\x01 \x01(\bR\x05valid2A\n" +
-	"\x04Card\x129\n" +
+	"\x05valid\x18\x01 \x01(\bR\x05valid2D\n" +
+	"\aService\x129\n" +
 	"\bValidate\x12\x15.card.ValidateRequest\x1a\x16.card.ValidateResponseBz\n" +
 	"\bcom.cardB\fServiceProtoP\x01Z0github.com/yourusername/yourproject/service/card\xa2\x02\x03CXX\xaa\x02\x04Card\xca\x02\x04Card\xe2\x02\x10Card\\GPBMetadata\xea\x02\x04Cardb\x06proto3"
 
@@ -159,8 +159,8 @@ var file_card_service_proto_goTypes = []any{
 	(*ValidateResponse)(nil), // 1: card.ValidateResponse
 }
 var file_card_service_proto_depIdxs = []int32{
-	0, // 0: card.Card.Validate:input_type -> card.ValidateRequest
-	1, // 1: card.Card.Validate:output_type -> card.ValidateResponse
+	0, // 0: card.Service.Validate:input_type -> card.ValidateRequest
+	1, // 1: card.Service.Validate:output_type -> card.ValidateResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

@@ -7,7 +7,7 @@ import (
 const errRange = 1 * errors.Range
 
 const (
-	ErrNumberInvalid errors.ErrCode = iota + errRange
+	ErrNumberInvalid errors.ErrCode = iota + errRange + 1
 	ErrNumberCheckDigitInvalid
 	ErrCardExpired
 )
