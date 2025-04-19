@@ -28,5 +28,9 @@ openapi-gen:
 	@go tool github.com/swaggo/swag/cmd/swag init -o api/gen/rest -d cmd/api,internal
 	@go tool github.com/swaggo/swag/cmd/swag fmt
 
+proto-gen:
+	@go tool github.com/bufbuild/buf/cmd/buf generate
+
 api-gen:
 	@make openapi-gen
+	@make proto-gen
