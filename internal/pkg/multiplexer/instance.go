@@ -12,6 +12,7 @@ import (
 	"github.com/dmytro-kucherenko/card-service/internal/pkg/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/soheilhy/cmux"
+	"google.golang.org/grpc"
 )
 
 const defaultTimeout = 10 * time.Second
@@ -57,6 +58,12 @@ func (multiplexer *Instance) WithLogger(logger log.Logger) *Instance {
 
 func (multiplexer *Instance) WithFiber(server *fiber.App) *Instance {
 	multiplexer.servers = append(multiplexer.servers, newFiberAdapter(server))
+
+	return multiplexer
+}
+
+func (multiplexer *Instance) WithGRPC(server *grpc.Server) *Instance {
+	multiplexer.servers = append(multiplexer.servers, newGRPCAdapter(server))
 
 	return multiplexer
 }

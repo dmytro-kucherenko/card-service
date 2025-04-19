@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package card;
+
+import "buf/validate/validate.proto";
+
+service Card { rpc Validate(ValidateRequest) returns (ValidateResponse); }
+
+message ValidateRequest {
+  string number = 1 [ (buf.validate.field).string.min_len = 1 ];
+  uint32 month = 2 [ (buf.validate.field).uint32 = {gt : 0, lt : 13} ];
+  uint32 year = 3 [ (buf.validate.field).uint32 = {gt : 1969, lt : 65536} ];
+}
+
+message ValidateResponse { bool valid = 1; }
