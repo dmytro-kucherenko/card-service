@@ -45,8 +45,8 @@ Check `Makefile` file for more commands.
 
 Routes:
 
-- Card Validation: /api/card/validate
-- OpenAPI Specification: /swagger/index.html
+- Card Validation: POST /api/card/validate
+- OpenAPI Specification: GET /swagger/index.html
 
 ### gRPC
 
