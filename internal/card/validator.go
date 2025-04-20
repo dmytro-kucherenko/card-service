@@ -26,13 +26,15 @@ func validateNumberPattern(number string) error {
 
 func validateNumberLuhn(number string) error {
 	sum := 0
-	for i := len(number) - 1; i >= 0; i-- {
+	length := len(number)
+
+	for i := length - 1; i >= 0; i-- {
 		digit, err := strconv.Atoi(string(number[i]))
 		if err != nil {
 			return errors.NewAppError(ErrNumberInvalid, "card number is not numeric")
 		}
 
-		isSecondDigit := (len(number)-i)%2 == 0
+		isSecondDigit := (length-i)%2 == 0
 		if isSecondDigit {
 			digit *= luhnCoef
 			if digit > luhnMaxDigitSum {
